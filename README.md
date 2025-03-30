@@ -33,7 +33,3 @@ IceSync is a web application that synchronizes workflow data between a Universal
 - start a sqlserver via docker or download and start local sqlserver 
 - start the **IceSync.sln** file and then build and start the project, (adjust the appsettings.json if needed), it should be accessbile from localhost:8081/swagger
 - open frontend sync-app folder and run '**npm install**' , then '**npm start**'. The backend url is already binded in the .env file.
-- Enjoy
-
-## Comming soon 
-- Integration tests with **Testcontainers**
