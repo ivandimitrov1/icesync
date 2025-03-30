@@ -1,0 +1,15 @@
+.App {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.error {
+  color: red;
+}
