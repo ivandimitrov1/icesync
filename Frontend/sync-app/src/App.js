@@ -64,7 +64,7 @@ function App() {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Worfklow Id test</th>
+            <th>Worfklow Id</th>
             <th>Worfklow name</th>
             <th>Is Active</th>
             <th>Multi Exec Behavior</th>
