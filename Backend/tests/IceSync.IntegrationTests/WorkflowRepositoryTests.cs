@@ -2,18 +2,20 @@ using IceSync.Application.Interfaces;
 using IceSync.Domain;
 using IceSync.Infrastructure.Data;
 using IceSync.Infrastructure.Data.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IceSync.IntegrationTests;
 
-[Collection("Database collection")]
+[Collection(nameof(ApiWebApplicationFactory))]
 public class WorkflowRepositoryTests
 {
     private readonly AppDbContext _dbContext;
     private readonly IWorkflowRepository _workflowRepository;
 
-    public WorkflowRepositoryTests(DatabaseFixture fixture)
+    public WorkflowRepositoryTests(ApiWebApplicationFactory fixture)
     {
-        _dbContext = fixture.DbContext;
+        var scope = fixture.Services.CreateScope();
+        _dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
         _workflowRepository = new WorkflowRepository(_dbContext);
 
         // Ensure clean state for each test

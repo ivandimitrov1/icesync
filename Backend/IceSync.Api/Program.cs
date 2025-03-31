@@ -88,3 +88,5 @@ void ApplyMigrations(WebApplication app)
         }
     }
 }
+
+public partial class Program { }
