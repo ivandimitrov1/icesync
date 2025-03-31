@@ -25,10 +25,12 @@ IceSync is a web application that synchronizes workflow data between a Universal
 - SQL Server
 - Docker (needed for the tests and app deploy)
 
-## App deploy
-- open the terminal from the root folder and execute **docker compose up**, then the FE will be accessible from localhost:3000 and the backend from localhost:8080
-
 ## Development phase 
 - start a sqlserver via docker or download and start local sqlserver 
 - start the **IceSync.sln** file and then build and start the project, (adjust the appsettings.json if needed), it should be accessbile from localhost:8081/swagger
 - open frontend sync-app folder and run '**npm install**' , then '**npm start**'. The backend url is already binded in the .env file.
+
+- to add a new migration, set Infrastructure prj as a start project and run 'dotnet ef --startup-project ../IceSync.Api/ migrations add MigrationScriptName -o Data/Migrations'
+
+## App deploy
+- open the terminal from the root folder and execute **docker compose up**, then the FE will be accessible from localhost:3000 and the backend from localhost:8080
