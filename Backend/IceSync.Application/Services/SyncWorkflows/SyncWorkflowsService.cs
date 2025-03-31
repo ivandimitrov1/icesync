@@ -6,7 +6,7 @@ using IceSync.Application.Services.External;
 using IceSync.Application.Services.Interfaces;
 using IceSync.Domain;
 
-namespace IceSync.Application.Services;
+namespace IceSync.Application.Services.SyncWorkflows;
 
 public class SyncWorkflowsService : ISyncWorkflowsService
 {
@@ -70,7 +70,7 @@ public class SyncWorkflowsService : ISyncWorkflowsService
                 }
 
                 workflowsInDb[syncingWorkflow.WorkflowId].Synced = true;
-            } 
+            }
             else
             {
                 toBeInserted.Add(syncingWorkflow);
@@ -86,7 +86,7 @@ public class SyncWorkflowsService : ISyncWorkflowsService
         _logger.LogInformation($"{toBeDeleted.Count} workflows to be deleted ... ");
         _logger.LogInformation($"{toBeUpdated.Count} workflows to be updated ...");
 
-        if (toBeDeleted.Any() ||  toBeInserted.Any() || toBeUpdated.Any())
+        if (toBeDeleted.Any() || toBeInserted.Any() || toBeUpdated.Any())
         {
             await _workflowRepository.SaveAsync();
         }

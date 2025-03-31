@@ -2,11 +2,6 @@
 using IceSync.Infrastructure.Data.Repositories;
 using IceSync.Infrastructure.Data;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IceSync.Application.Services.Interfaces;
 using IceSync.Application.Interfaces.UniversalLoaderApi;
 using NSubstitute;
@@ -15,7 +10,7 @@ using IceSync.Infrastructure.UniversalLoaderApi.Responses;
 using IceSync.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace IceSync.IntegrationTests;
+namespace IceSync.IntegrationTests.Services;
 
 [Collection(nameof(ApiWebApplicationFactory))]
 public class SyncWorkflowServiceTests
@@ -40,9 +35,9 @@ public class SyncWorkflowServiceTests
     }
 
     [Fact]
-    public async Task SyncWorkflows_should_insert_update_and_delete_entries()
+    public async Task SyncWorkflows_ShouldInsertAndUpdateAndDeleteEntries()
     {
-        // Arrane
+        // Arrange
         var workflows = new List<Workflow>
         {
             new Workflow { WorkflowId = 1, WorkflowName = "should be deleted", UserId = "userId1", MultiExecBehavior = "multi" },

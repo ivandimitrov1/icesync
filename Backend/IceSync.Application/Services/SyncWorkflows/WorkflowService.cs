@@ -9,13 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IceSync.Application.Services;
+namespace IceSync.Application.Services.SyncWorkflows;
 
 public class WorkflowService : IWorkflowService
 {
     private readonly IWorkflowRepository _workflowRepository;
     private readonly IUniversalLoaderService _universalLoaderService;
-
     public WorkflowService(
         IWorkflowRepository workflowRepository,
         IUniversalLoaderService universalLoaderService)
@@ -29,8 +28,16 @@ public class WorkflowService : IWorkflowService
         return _workflowRepository.GetAllByUserId(userId);
     }
 
-    public Task<bool> RunWorkflow(int workflowId)
+    public async Task<bool> RunWorkflow(string userId, int workflowId)
     {
-        return _universalLoaderService.RunWorkflowAsync(workflowId);
+        var workflow = await _workflowRepository.GetByWorfklowId(userId, workflowId);
+        if (workflow != null)
+        {
+            return await _universalLoaderService.RunWorkflowAsync(workflowId);
+        }
+
+        // TO:DO
+        // create a custom exception
+        throw new ArgumentException("Not authroized for running this workflow");
     }
 }

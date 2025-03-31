@@ -4,7 +4,7 @@ using IceSync.Infrastructure.Data;
 using IceSync.Infrastructure.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace IceSync.IntegrationTests;
+namespace IceSync.IntegrationTests.Repositories;
 
 [Collection(nameof(ApiWebApplicationFactory))]
 public class WorkflowRepositoryTests
@@ -78,7 +78,7 @@ public class WorkflowRepositoryTests
     public async Task SaveAsync_ShouldPersistChanges()
     {
         // Arrange
-        var workflow = new Workflow { WorkflowName = "Unsaved Workflow", UserId = "user1" , MultiExecBehavior = "multi" };
+        var workflow = new Workflow { WorkflowName = "Unsaved Workflow", UserId = "user1", MultiExecBehavior = "multi" };
         await _workflowRepository.CreateAsync(new List<Workflow> { workflow });
 
         // Pre-assert (not saved yet)

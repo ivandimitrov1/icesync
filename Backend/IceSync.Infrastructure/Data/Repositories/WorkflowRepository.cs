@@ -4,6 +4,8 @@ using IceSync.Domain;
 
 namespace IceSync.Infrastructure.Data.Repositories;
 
+// TO:DO 
+// add a base repo
 public class WorkflowRepository : IWorkflowRepository
 {
     private readonly AppDbContext _context;
@@ -27,4 +29,11 @@ public class WorkflowRepository : IWorkflowRepository
 
     public async Task SaveAsync() => 
         await _context.SaveChangesAsync();
+
+    public async Task<Workflow?> GetByWorfklowId(string userId, int workflowId)
+    {
+        return await _context
+                    .Workflows
+                    .FirstOrDefaultAsync(x => x.UserId == userId && x.WorkflowId == workflowId);
+    }
 }

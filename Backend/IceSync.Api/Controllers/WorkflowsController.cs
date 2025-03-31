@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using IceSync.Api.Responses;
@@ -30,7 +29,7 @@ public class WorkflowsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<IceSync.Api.Responses.WorkflowResponse>>> GetWorkflows()
+    public async Task<ActionResult<IEnumerable<WorkflowResponse>>> GetWorkflows()
     {
         var userId = _universalLoaderApiOptions.CurrentValue.ApiUserId;
 
@@ -49,9 +48,11 @@ public class WorkflowsController : ControllerBase
     [HttpPost("{workflowId}/run")]
     public async Task<ActionResult> RunWorkflow(int workflowId)
     {
+        var userId = _universalLoaderApiOptions.CurrentValue.ApiUserId;
+
         try
         {
-            if (await _workflowService.RunWorkflow(workflowId))
+            if (await _workflowService.RunWorkflow(userId, workflowId))
             {
                 return Ok();
             }
@@ -60,7 +61,7 @@ public class WorkflowsController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error running a worfklow");
+            _logger.LogError(ex, $"Error running a worfklow for {userId}");
             return StatusCode(500, "Internal server error");
         }
     }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-
-namespace IceSync.Infrastructure.UniversalLoaderApi.Requests;
+﻿namespace IceSync.Infrastructure.UniversalLoaderApi.Requests;
 
 public class AuthRequest
 {

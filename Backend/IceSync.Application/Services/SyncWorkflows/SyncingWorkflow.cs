@@ -1,6 +1,6 @@
 ﻿using IceSync.Domain;
 
-namespace IceSync.Application.Services;
+namespace IceSync.Application.Services.SyncWorkflows;
 
 public class SyncingWorkflow
 {

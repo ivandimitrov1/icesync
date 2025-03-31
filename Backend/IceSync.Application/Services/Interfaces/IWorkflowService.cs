@@ -6,5 +6,5 @@ public interface IWorkflowService
 {
     Task<IList<Workflow>> GetAllByUserId(string userId);
 
-    Task<bool> RunWorkflow(int workflowId);
+    Task<bool> RunWorkflow(string userId, int workflowId);
 }

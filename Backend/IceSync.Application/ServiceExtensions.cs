@@ -3,8 +3,8 @@ using Microsoft.Extensions.Configuration;
 using IceSync.Application.Interfaces.UniversalLoaderApi;
 using Refit;
 using IceSync.Application.Services.External;
-using IceSync.Application.Services;
 using IceSync.Application.Services.Interfaces;
+using IceSync.Application.Services.SyncWorkflows;
 
 namespace IceSync.Application;
 
