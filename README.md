@@ -11,6 +11,7 @@ IceSync is a web application that synchronizes workflow data between a Universal
 - **ORM**: Entity Framework Core (migrations are done on startup)
 - **Background Processing**: Hangfire
 - **External communication**: Refit
+- **Testing**: XUnit, TestContainers
 - **Docker support**: true
 
 ## Features
