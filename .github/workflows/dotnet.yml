@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build Backend/IceSync.sln --no-restore
+      run: dotnet build ./Backend/IceSync.sln --no-restore
     - name: Test
-      run: dotnet test Backend\tests\IceSync.IntegrationTests/IceSync.IntegrationTests.csproj --no-build --verbosity normal
+      run: dotnet test ./Backend/tests/IceSync.IntegrationTests/IceSync.IntegrationTests.csproj --no-build --verbosity normal
