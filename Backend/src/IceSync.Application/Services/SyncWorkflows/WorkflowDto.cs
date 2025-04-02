@@ -2,7 +2,7 @@
 
 namespace IceSync.Application.Services.SyncWorkflows;
 
-public class SyncingWorkflow
+public class WorkflowDto
 {
     public Workflow Workflow { get; set; }
 

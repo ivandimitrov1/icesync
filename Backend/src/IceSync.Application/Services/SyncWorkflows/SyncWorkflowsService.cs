@@ -43,13 +43,13 @@ public class SyncWorkflowsService : ISyncWorkflowsService
         }
     }
 
-    public async Task SyncWorkflows(string userId)
+    private async Task SyncWorkflows(string userId)
     {
         var syncingWorkflows = await _universalLoaderService.GetWorkflowsAsync();
         _logger.LogInformation($"{syncingWorkflows.Count} workflows to be processed ..");
 
         var workflowsInDb = (await _workflowRepository.GetAllByUserId(userId))
-                            .ToDictionary(x => x.WorkflowId, y => new SyncingWorkflow { Workflow = y, Synced = false });
+                            .ToDictionary(x => x.WorkflowId, y => new WorkflowDto { Workflow = y, Synced = false });
 
         var toBeInserted = new List<Workflow>();
         var toBeUpdated = new List<Workflow>();
