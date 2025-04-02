@@ -6,9 +6,10 @@ name: .NET
 on:
   push:
     branches: [ "main" ]
+      - 'Backend/**'
   pull_request:
     branches: [ "main" ]
-
+      - 'Backend/**'
 jobs:
   build:
 
