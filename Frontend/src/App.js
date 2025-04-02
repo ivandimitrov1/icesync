@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { fetchWorkflows, runWorkflow } from './SyncAppApi';
@@ -78,7 +77,7 @@ function App() {
               <td>{workflow.workflowName}</td>
               <td>{workflow.isActive.toString()}</td>
               <td>{workflow.multiExecBehavior}</td>
-              <td> <button onClick={() => handleRunClick(workflow.workflowId)} className="run-button"> Run </button></td>
+              <td><button onClick={() => handleRunClick(workflow.workflowId)} className="run-button"> Run </button></td>
             </tr>
           ))}
         </tbody>
