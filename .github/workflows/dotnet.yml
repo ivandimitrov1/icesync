@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./Backend/IceSync.sln
     - name: Build
-      run: dotnet build ./Backend/IceSync.sln --no-restore
+      run: dotnet build ./Backend/IceSync.Api/IceSync.Api.csproj --no-restore
     - name: Test
       run: dotnet test ./Backend/tests/IceSync.IntegrationTests/IceSync.IntegrationTests.csproj --no-build --verbosity normal
