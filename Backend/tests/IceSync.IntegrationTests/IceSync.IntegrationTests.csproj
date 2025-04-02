@@ -21,10 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\IceSync.Api\IceSync.Api.csproj" />
-    <ProjectReference Include="..\..\IceSync.Application\IceSync.Application.csproj" />
-    <ProjectReference Include="..\..\IceSync.Domain\IceSync.Domain.csproj" />
-    <ProjectReference Include="..\..\IceSync.Infrastructure\IceSync.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\IceSync.Api\IceSync.Api.csproj" />
+    <ProjectReference Include="..\..\src\IceSync.Application\IceSync.Application.csproj" />
+    <ProjectReference Include="..\..\src\IceSync.Domain\IceSync.Domain.csproj" />
+    <ProjectReference Include="..\..\src\IceSync.Infrastructure\IceSync.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@ services:
   backend:
     container_name: webapi
     build:
-      context: ./Backend
+      context: ./Backend/src
       dockerfile: IceSync.Api/Dockerfile
     environment:
       ConnectionStrings__SqlServerConnectionString: "Server=docker_sqlserver;Database=IceSyncDb;User Id=SA;Password=Password123;TrustServerCertificate=True"
