@@ -17,7 +17,7 @@ IceSync is a web application that synchronizes workflow data between a Universal
 ## Features
 - Workflow listing
 - Running a worfklow
-- Manual workflow execution (via hangfire, visible and enabled for all)
+- Manual workflow synchronization (via hangfire, visible and enabled for all)
 - Automatic synchronization every 30 minutes
 
 ## Prerequisites
