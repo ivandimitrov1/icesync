@@ -64,7 +64,7 @@ function App() {
         <thead>
           <tr>
             <th>Worfklow Id</th>
-            <th>Worfklow name</th>
+            <th>Worfklow Name</th>
             <th>Is Active</th>
             <th>Multi Exec Behavior</th>
             <th>Actions</th>
