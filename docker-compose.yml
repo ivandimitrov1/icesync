@@ -1,0 +1,51 @@
+version: '3.4'
+
+name: icesync_services
+services:
+  backend:
+    container_name: webapi
+    build:
+      context: ./Backend/src
+      dockerfile: IceSync.Api/Dockerfile
+    environment:
+      ConnectionStrings__SqlServerConnectionString: "Server=docker_sqlserver;Database=IceSyncDb;User Id=SA;Password=Password123;TrustServerCertificate=True"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - docker_sqlserver
+    networks:
+      - app-network
+      
+  frontend:
+    container_name: react_app
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_SYNC_APP_BASE_API_URL=http://localhost:8080
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - ./frontend/node_modules:/app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  docker_sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: sql_server2022
+    ports:
+      - "1433:1433" 
+    environment:
+      - ACCEPT_EULA=y
+      - SA_PASSWORD=Password123
+    volumes:
+      - ./mssqldata:/var/opt/mssql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
