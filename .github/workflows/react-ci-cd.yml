@@ -29,12 +29,8 @@ jobs:
     - name: Run tests
       working-directory: Frontend
       run: npm run test
-    
-    - name: Build project
-      working-directory: Frontend
-      run: npm run build
 
-    - name: Deploy to GitHub Pages
+    - name: Build and deploy to GitHub Pages
       run: npm run deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
