@@ -24,13 +24,18 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      working-directory: path/to/your/react-app
+      working-directory: frontend
       run: npm install
     
     - name: Run tests
-      working-directory: path/to/your/react-app
+      working-directory: frontend
       run: npm test
     
     - name: Build project
-      working-directory: path/to/your/react-app
+      working-directory: frontend
       run: npm run build
+
+    - name: Deploy to GitHub Pages
+      run: npm run deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
