@@ -54,7 +54,7 @@ function App() {
   }
 
   if (error) {
-    return <div className="error">Error: {error}</div>;
+    return <div className="error">[Error] {error}</div>;
   }
 
   return (
@@ -73,7 +73,7 @@ function App() {
         <tbody>
           {data.map(workflow => (
             <tr key={workflow.id}>
-              <td>{workflow.workflowId} test</td>
+              <td>{workflow.workflowId}</td>
               <td>{workflow.workflowName}</td>
               <td>{workflow.isActive.toString()}</td>
               <td>{workflow.multiExecBehavior}</td>
