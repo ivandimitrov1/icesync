@@ -32,6 +32,6 @@ jobs:
 
     - name: Build and deploy to GitHub Pages
       working-directory: Frontend
-      run: npm run deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
