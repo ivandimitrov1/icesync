@@ -1,8 +1,0 @@
-bin/
-obj/
-[Dd]ocker/
-[Dd]ebug/
-[Rr]elease/
-*.user
-*.suo
-*.userprefs
