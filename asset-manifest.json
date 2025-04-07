@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/icesync/static/css/main.b0a23420.css",
-    "main.js": "/icesync/static/js/main.480dd42b.js",
+    "main.js": "/icesync/static/js/main.e61e7330.js",
     "static/js/488.ed424928.chunk.js": "/icesync/static/js/488.ed424928.chunk.js",
     "index.html": "/icesync/index.html",
     "main.b0a23420.css.map": "/icesync/static/css/main.b0a23420.css.map",
-    "main.480dd42b.js.map": "/icesync/static/js/main.480dd42b.js.map",
+    "main.e61e7330.js.map": "/icesync/static/js/main.e61e7330.js.map",
     "488.ed424928.chunk.js.map": "/icesync/static/js/488.ed424928.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b0a23420.css",
-    "static/js/main.480dd42b.js"
+    "static/js/main.e61e7330.js"
   ]
 }
