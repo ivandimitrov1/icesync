@@ -3,17 +3,23 @@
 ## Overview
 IceSync is a web application that synchronizes workflow data between a Universal Loader API and a local SQL Server database. It provides a user interface to view workflows, manually trigger workflow executions, and automatically synchronizes data every 30 minutes.
 
+## Live Demo
+https://ivandimitrov1.github.io/icesync/
+
 ## Technical Stack
 - **Frontend**: React
 - **Backend**: .NET 8 Web API
-- **Database**: SQL Server
+- **Database**: Postgres
 - **Architecture**: Clean Architecture
 - **ORM**: Entity Framework Core (migrations are done on startup)
 - **Background Processing**: Hangfire
 - **External communication**: Refit
 - **Testing**: XUnit, TestContainers
 - **Docker support**: true
-
+- **CI/CD**: Github actions, automated deploy
+- **FE Host**: Github pages
+- **BE Host**: Azure
+  
 ## Features
 - Workflow listing
 - Running a worfklow
