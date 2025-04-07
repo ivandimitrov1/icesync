@@ -1,4 +1,4 @@
-name: UI to be tested, build and deployed
+name: UI CI
 
 on:
   push:
