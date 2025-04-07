@@ -1,0 +1,33 @@
+name: Deploy Server
+
+on:
+  workflow_dispatch:
+
+env:
+  SERVER_APP_NAME: "icesync"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install dependencies
+        run: dotnet restore ./Backend/src/IceSync.Api/IceSync.Api.csproj
+
+      - name: Build
+        run: dotnet build ./Backend/src/IceSync.Api/IceSync.Api.csproj
+
+      - name: Publish
+        run: dotnet publish ./Backend/src/IceSync.Api/IceSync.Api.csproj --configuration Release --output ./publish
+
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.SERVER_APP_NAME }}
+          publish-profile: ${{ secrets.SERVER_PUBLISH_PROFILE }}
+          package: ./publish
