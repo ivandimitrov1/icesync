@@ -1,0 +1,32 @@
+name: UI to be deployed to ghpages
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        cache-dependency-path: Frontend/package-lock.json
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      working-directory: Frontend
+      run: npm install
+
+    - name: Build app
+      working-directory: Frontend
+      run: npm run build
+
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+          github_token: ${{ secrets.CUSTOM_GITHUB_ACCESSS }}
+          publish_dir: ./Frontend/build
