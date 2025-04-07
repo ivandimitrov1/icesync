@@ -12,7 +12,7 @@ public static class ServiceExtensions
 {
     public static void AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("SqlServerConnectionString")));
+        services.AddDbContext<AppDbContext>(opts => opts.UseNpgsql(configuration.GetConnectionString("DefaultConnectionString")));
 
         services.AddScoped<IWorkflowRepository, WorkflowRepository>();
     }

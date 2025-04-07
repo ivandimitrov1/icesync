@@ -6,6 +6,7 @@ using IceSync.Application;
 using IceSync.Infrastructure;
 using IceSync.Infrastructure.Data;
 using IceSync.Application.Services.SyncWorkflows;
+using Hangfire.PostgreSql;
 
 Console.WriteLine("Starting web api ...");
 
@@ -18,17 +19,24 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddHangfire(configuration => configuration
     .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
     .UseSimpleAssemblyNameTypeSerializer()
     .UseRecommendedSerializerSettings()
-    .UseSqlServerStorage(builder.Configuration.GetConnectionString("SqlServerConnectionString")));
+    .UsePostgreSqlStorage(connectionString));
 
 builder.Services.AddHangfireServer();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMemoryCache();
+
+builder.Services.AddHealthChecks()
+        .AddNpgSql(
+        connectionString: connectionString,
+        name: "postgresql",
+        tags: new[] { "database", "postgresql" });
 
 var allowedHosts = builder.Configuration["CorsAllowedHosts"].Split(";");
 builder.Services.AddCors(options =>
@@ -64,6 +72,8 @@ RecurringJob.AddOrUpdate<SyncWorkflowsService>("my-sync-worfklow-job",
     builder.Configuration["UniversalLoaderApi:SyncJobCronExpression"]);
 
 app.UseCors("AllowedOrigins");
+
+app.MapHealthChecks("/api/health");
 
 app.Run();
 

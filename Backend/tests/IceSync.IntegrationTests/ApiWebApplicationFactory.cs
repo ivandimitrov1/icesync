@@ -1,26 +1,22 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using Testcontainers.MsSql;
-using Microsoft.EntityFrameworkCore;
-using IceSync.Infrastructure.Data;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using IceSync.Application.Interfaces.UniversalLoaderApi;
 using NSubstitute;
+using Testcontainers.PostgreSql;
 
 namespace IceSync.IntegrationTests;
 
 public class ApiWebApplicationFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
-    private readonly MsSqlContainer _dbContainer = new MsSqlBuilder()
-            .WithImage("mcr.microsoft.com/mssql/server:2022-latest")
-            .WithPassword("Password123")
+    private readonly PostgreSqlContainer _dbContainer = new PostgreSqlBuilder()
+            .WithImage("postgres:16")
             .Build();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        Environment.SetEnvironmentVariable("ConnectionStrings:SqlServerConnectionString", _dbContainer.GetConnectionString());
+        Environment.SetEnvironmentVariable("ConnectionStrings:DefaultConnectionString", _dbContainer.GetConnectionString());
 
         builder.ConfigureTestServices(services =>
         {
