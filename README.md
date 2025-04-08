@@ -36,6 +36,3 @@ https://ivandimitrov1.github.io/icesync/
 - open frontend folder and run '**npm install**' , then '**npm start**'. The backend url is already binded in the .env file.
 
 - to add a new migration, set Infrastructure prj as a start project and run 'dotnet ef --startup-project ../IceSync.Api/ migrations add MigrationScriptName -o Data/Migrations'
-
-## App deploy
-- open the terminal from the root folder and execute **docker compose up**, then the FE will be accessible from localhost:3000 and the backend from localhost:8080
