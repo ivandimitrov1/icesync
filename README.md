@@ -7,18 +7,16 @@ IceSync is a web application that synchronizes workflow data between a Universal
 https://ivandimitrov1.github.io/icesync/
 
 ## Technical Stack
-- **Frontend**: React
-- **Backend**: .NET 8 Web API
-- **Database**: Postgres
+- **Frontend**: React (hosted on github pages)
+- **Backend**: .NET 8 Web API (hosted on Azure)
+- **Database**: Postgres (hosted on superbase)
 - **Architecture**: Clean Architecture
 - **ORM**: Entity Framework Core (migrations are done on startup)
 - **Background Processing**: Hangfire
 - **External communication**: Refit
 - **Testing**: XUnit, TestContainers
 - **Docker support**: true
-- **CI/CD**: Github actions, automated deploy
-- **FE Host**: Github pages
-- **BE Host**: Azure
+- **CI/CD**: Github actions
   
 ## Features
 - Workflow listing
